@@ -1,0 +1,59 @@
+// app global css in Stylus form
+
+header
+    position fixed
+    display flex
+    align-items center
+    justify-content center
+    height 100vh
+    transition 1s
+
+    .content
+        display block !important
+        width 100%
+        max-width 450px
+        transition 1s
+
+    .logo
+        position relative
+        display block
+        overflow hidden
+        height 150px
+        width 100%
+        background-image url('/statics/img/logo.png')
+        background-size contain
+        background-position center
+        background-repeat no-repeat
+        color transparent
+        text-indent -9999999px
+        cursor pointer
+        transition 1s
+
+    &.active
+        // position fixed
+        // display block
+        align-items none
+        justify-content none
+        height 80px
+        transition 1s
+
+        .content
+            display inline-flex !important
+            width 100%
+            max-width 1280px
+            transition 1s
+
+        .logo
+            display inline-block
+            height 60px
+            background-position left center
+            cursor pointer
+            transition 1s
+
+.q-page .content
+    width 100%
+    max-width 1280px
+    margin 0 auto
+
+.bg-transparent
+    background-color transparent !important
