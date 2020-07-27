@@ -83,7 +83,6 @@ export default {
         this.$axios.get(url)
         .then(res => {
           var dados = res.data
-          console.log(dados)
           this.dadosFilme = dados
           // if(dados.Response === "True") {
           //   this.listaFilmes = this.listaFilmes.concat(dados.Search)
