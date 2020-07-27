@@ -16,6 +16,9 @@
       <q-btn class="cursor-pointer bg-grey-8 text-white" @click="validaBusca(txtBusca)">
         <q-icon name="search" /><span class="btnTxtBusca"> Buscar</span>
       </q-btn>
+      <q-btn class="cursor-pointer bg-grey-8 text-white btnVoltar q-ml-sm" to="/">
+        <q-icon name="arrow_back" />
+      </q-btn>
     </template>
     </q-input>
   </div>
