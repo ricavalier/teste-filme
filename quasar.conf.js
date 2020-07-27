@@ -52,6 +52,7 @@ module.exports = function (ctx) {
           url : 'http://www.omdbapi.com/?'
         } : {
           usr : 'apikey=15fbd780',
+          usr2 : 'apikey=4b57972a',
           url : 'http://www.omdbapi.com/?'
         }
       },

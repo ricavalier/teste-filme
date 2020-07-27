@@ -3,6 +3,7 @@
     <q-input
       bottom-slots
       class="q-pa-xs"
+      input-class="text-bold"
       color="grey-8"
       v-model="txtBusca"
       label="Procure seu Filme"
@@ -13,7 +14,7 @@
     >
     <template v-slot:after>
       <q-btn class="cursor-pointer bg-grey-8 text-white" @click="validaBusca(txtBusca)">
-      <q-icon name="search" /><span class="btnTxtBusca"> Buscar</span>
+        <q-icon name="search" /><span class="btnTxtBusca"> Buscar</span>
       </q-btn>
     </template>
     </q-input>
@@ -56,15 +57,13 @@ export default {
           this.$root.$emit('envBusca', b)
         }, 100)
       }
-      //alert('show ' + b)
     },
 		validaCampo (t) {
 			const tipo = t
 			if (tipo === 'requerido') {
-				// alert('aqui: ' + this.mensagemForm.requerido)
 				 return this.mensagemForm.requerido
 			} else {
-
+        this.showNotif('Falha na validação dos Campos', 'error', 'negative', 'white', 'bottom')
 			}
     },
     validaBusca (b) {
@@ -73,13 +72,6 @@ export default {
       } else {
         this.showNotif('Verifique o campo de busca!', 'warning', 'orange-8', 'white', 'bottom')
       }
-			// this.$refs.formBusca.validate().then(success => {
-			// 	if (success) {
-      //     this.execBusca()
-			// 	} else {
-			// 		this.showNotif('Verifique o campo de busca!', 'warning', 'orange-8', 'white', 'bottom')
-			// 	}
-			// })
 		},
 		showNotif (message, icon, color, txtColor, position) {
 			this.$q.notify({
@@ -95,12 +87,3 @@ export default {
   }
 }
 </script>
-<style lang="stylus">
-.btnTxtBusca
-  display inline 
-
-@media screen and (max-width: 767px) 
-  .btnTxtBusca
-    display none
-
-</style>
