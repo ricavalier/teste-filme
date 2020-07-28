@@ -12,3 +12,10 @@ export default {
   name: 'PageIndex'
 }
 </script>
+<style lang="stylus">
+  img
+    width 100%
+    max-width 350px
+</style>
+
+</style>
