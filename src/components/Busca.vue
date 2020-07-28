@@ -1,26 +1,39 @@
 <template>
   <div>
-    <q-input
-      bottom-slots
-      class="q-pa-xs"
-      input-class="text-bold"
-      color="grey-8"
-      v-model="txtBusca"
-      label="Procure seu Filme"
-      @keypress="limpaBusca()"
-      @keyup.enter="validaBusca(txtBusca)"
-      dense
-      :rules="rules.requerido"
-    >
-    <template v-slot:after>
-      <q-btn class="cursor-pointer bg-grey-8 text-white" @click="validaBusca(txtBusca)">
-        <q-icon name="search" /><span class="btnTxtBusca"> Buscar</span>
+    <div class="areaBusca bg-grey-2" :class="{'ativo q-py-md q-px-sm' : estaAtivo}">
+      <q-input
+        bottom-slots
+        class="q-pa-xs"
+        input-class="text-bold"
+        color="grey-8"
+        v-model="txtBusca"
+        label="Procure seu Filme"
+        @keypress="limpaBusca()"
+        @keyup.enter="validaBusca(txtBusca)"
+        dense
+        :rules="rules.requerido"
+      >
+      <template v-slot:after>
+        <q-btn class="cursor-pointer bg-grey-8 text-white" @click="validaBusca(txtBusca)">
+          <q-icon name="search" /><span class="btnTxtBusca"> Buscar</span>
+        </q-btn>
+        <q-btn class="cursor-pointer bg-grey-8 text-white btnVoltar q-ml-sm" to="/">
+          <q-icon name="arrow_back" />
+        </q-btn>
+        <q-btn class="cursor-pointer bg-grey-8 text-white btnFechar q-ml-sm" @click="fechaBusca()">
+          <q-icon name="close" />
+        </q-btn>
+      </template>
+      </q-input>
+    </div>
+    <div class="areaBtn">
+      <q-btn class="cursor-pointer bg-grey-8 text-white q-ml-sm" @click="abreBusca()">
+        <q-icon name="search" />
       </q-btn>
-      <q-btn class="cursor-pointer bg-grey-8 text-white btnVoltar q-ml-sm" to="/">
+      <q-btn class="cursor-pointer bg-grey-8 text-white q-ml-sm" to="/">
         <q-icon name="arrow_back" />
       </q-btn>
-    </template>
-    </q-input>
+    </div>
   </div>
 </template>
 
@@ -30,6 +43,7 @@ export default {
   data () {
     return {
       txtBusca: '',
+      estaAtivo: false,
       rules: {
 				requerido: [
 					v => !!v || this.validaCampo('requerido')
@@ -41,6 +55,12 @@ export default {
     }
   },
   methods: {
+    abreBusca() {
+      this.estaAtivo = true
+    },
+    fechaBusca() {
+      this.estaAtivo = false
+    },
     limpaBusca () {
       var rota = this.$router.currentRoute.path
       if(rota !== '/') {
@@ -70,6 +90,7 @@ export default {
 			}
     },
     validaBusca (b) {
+      this.estaAtivo = false
       if(!!b) {
         this.execBusca(b)
       } else {

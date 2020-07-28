@@ -13,6 +13,7 @@ header
     width 100%
     max-width 450px
     transition 1s
+    margin 50px 0
 
   .logo
     position relative
@@ -32,6 +33,12 @@ header
   .btnVoltar
     display none
 
+  .areaBusca
+    display block
+  
+  .areaBtn
+    display none
+
   &.active
     align-items none
     justify-content none
@@ -43,6 +50,7 @@ header
       width 100%
       max-width 1280px
       transition 1s
+      margin 0
 
     .logo
       display inline-block
@@ -53,6 +61,12 @@ header
 
     .btnVoltar
       display block
+
+    .areaBusca
+      display block
+    
+    .areaBtn
+      display none
 
 .q-page .content
   width 100%
@@ -76,6 +90,32 @@ sem-imagem
 .btnTxtBusca
   display inline 
 
+.btnFechar
+  display none
+
 @media screen and (max-width: 767px) 
   .btnTxtBusca
     display none
+
+  header
+    &.active
+      .areaBusca
+        display none
+      
+        &.ativo
+          position absolute
+          display block
+          top: -2px
+          right: 0
+          width 100%
+          z-index 10
+
+          .q-field
+            .btnFechar
+              display inline
+
+            .btnVoltar
+              display none
+
+      .areaBtn
+        display inline-block
